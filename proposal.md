@@ -1,7 +1,7 @@
 Lab 1 Project Porpoisal
 The names of everyone in your group
-  Pip
-  Cece
+  >Pip
+  >Cece
 The additional feature(s) you plan on implementing
   Have a login-authetication with an API like facebook or google.
   Store your app’s data in Firebase. This will make it persistent across phones as well!
