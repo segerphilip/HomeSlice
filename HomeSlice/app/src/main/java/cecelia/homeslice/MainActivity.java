@@ -12,6 +12,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         addMainPageFragment();
+
+        //this line of code is needed for every activity that uses firebase
+        //firebase resource: https://www.firebase.com/docs/android/quickstart.html
+        Firebase.setAndroidContext(this);
     }
 
     public void addMainPageFragment() {
