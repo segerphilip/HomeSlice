@@ -1,9 +1,9 @@
-## Design Proposal
+# Design Proposal
 
-# Wireframe Map
+## Wireframe Map
 ![wireframe map](/Resources/lab1_frame_map.png)
 
-# Wireframe Descriptions
+## Wireframe Descriptions
 
 
 <img src="/Resources/login.png" width="200" />
