@@ -47,4 +47,5 @@ On this screen you can view the menu, add items to your order and edit any items
 This screen shows the alert dialog that pops up when you click to edit a menu item.You can click out by tapping the greyed out screen or clicking a save button or cancel button, not pictured here.
 
 <img src="/Resources/order_details.png" width="200"/>
+
 On this screen, you can view and edit your order. You can leave the page by clicking on Menu, to see the menu. 
