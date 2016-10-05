@@ -22,12 +22,12 @@ This screen displays all active orders, with the customer name on top and the or
 By clicking on Menu, you can view and edit all of your menu items. 
 
 
-<img src="/Resources/order_details.png" width="200" align="left" />
+<img src="/Resources/order_details.png" width="200"/>
 
 This screen displays the details of an order. You can leave it back to the list of orders via the back button. 
 
 
-<img src="/Resources/cook_menu" width="200" align="left" />
+<img src="/Resources/cook_menu.png" width="200" />
 
 This screen displays all of the items on a cook’s menu. The cook can add/edit/delete menu items from this page, with buttons like those illustrated in the menu list for the Customer. The cook can click on each item to edit its ingredients or look at the orders by clicking on Orders. 
 
