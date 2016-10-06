@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HomeSlice</string>
+    <string name="title_activity_cook">CookActivity</string>
+    <string name="action_settings">Settings</string>
 </resources>

@@ -3,7 +3,7 @@
     package="cecelia.homeslice">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,6 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".CookActivity"
+            android:label="@string/title_activity_cook"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

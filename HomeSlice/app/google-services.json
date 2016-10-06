@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "162802516270-p41rlui1m544j2jn9dnsji6nkhorkfgk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cecelia.homeslice",
+            "certificate_hash": "C2C4A5054B6B2A020A2D45931980DD52DE7BC733"
+          }
+        },
+        {
           "client_id": "162802516270-vhhp759rgmt99tsnd3m6lgccefh3ebt9.apps.googleusercontent.com",
           "client_type": 3
         }
