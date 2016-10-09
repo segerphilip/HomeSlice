@@ -1,10 +1,14 @@
 package cecelia.homeslice;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+/**
+ *
+ */
 public class CookActivity extends AppCompatActivity {
 
     @Override
@@ -15,10 +19,31 @@ public class CookActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        final CookActivityFragment newFragment = new CookActivityFragment();
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        transaction.replace(R.id.fragment_holder, newFragment, "fragment_cook");
-//        transaction.commit();
-    }
+        // logic for tab and fragment viewpager learned from here:
+        // http://www.truiton.com/2015/06/android-tabs-example-fragments-viewpager/
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.addTab(tabLayout.newTab().setText("TESTING"));
+        tabLayout.addTab(tabLayout.newTab().setText("TESTING2"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        final TabAdapter adapter = new TabAdapter(getSupportFragmentManager(),
+                tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+    }
 }
