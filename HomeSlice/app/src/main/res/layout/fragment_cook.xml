@@ -11,5 +11,4 @@
     tools:context="cecelia.homeslice.CookActivityFragment"
     tools:showIn="@layout/activity_cook">
 
-
 </RelativeLayout>
