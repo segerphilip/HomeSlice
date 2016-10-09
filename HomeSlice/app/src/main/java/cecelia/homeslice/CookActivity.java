@@ -15,10 +15,10 @@ public class CookActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final CookActivityFragment newFragment = new CookActivityFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_holder, newFragment, "fragment_cook");
-        transaction.commit();
+//        final CookActivityFragment newFragment = new CookActivityFragment();
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//        transaction.replace(R.id.fragment_holder, newFragment, "fragment_cook");
+//        transaction.commit();
     }
 
 }
