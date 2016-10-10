@@ -24,11 +24,6 @@ public class TabAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-//                final CookOrderFragment newFragment = new CookOrderFragment();
-//                FragmentTransaction transaction = mFragmentManager.beginTransaction();
-//                transaction.replace(R.id.fragment, newFragment, "orderFragment");
-//                transaction.commit();
-//                return newFragment;
                 CookOrderFragment tab1 = new CookOrderFragment();
                 return tab1;
             case 1:
