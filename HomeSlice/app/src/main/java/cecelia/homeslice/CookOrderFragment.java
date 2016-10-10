@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -33,7 +34,19 @@ public class CookOrderFragment extends Fragment {
         ButterKnife.bind(this, view);
         orderList.setAdapter(ordersAdapter);
 
-        // fab used to add completely new notes
+        // remove item on long press
+        orderList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                final CookItem item = ordersAdapter.getItem(position);
+                item.setDone(true);
+                orders.remove(item);
+                ordersAdapter.notifyDataSetChanged();
+                return false;
+            }
+        });
+
+        // TODO only for testing, remove
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +55,6 @@ public class CookOrderFragment extends Fragment {
             }
         });
 
-//        ordersAdapter.notifyDataSetChanged();
         return view;
     }
 }
