@@ -22,8 +22,8 @@ public class CookActivity extends AppCompatActivity {
         // logic for tab and fragment viewpager learned from here:
         // http://www.truiton.com/2015/06/android-tabs-example-fragments-viewpager/
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("TESTING"));
-        tabLayout.addTab(tabLayout.newTab().setText("TESTING2"));
+        tabLayout.addTab(tabLayout.newTab().setText("Orders"));
+        tabLayout.addTab(tabLayout.newTab().setText("Menu"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);

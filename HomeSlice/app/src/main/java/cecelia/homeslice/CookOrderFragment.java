@@ -1,7 +1,6 @@
 package cecelia.homeslice;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,15 +42,6 @@ public class CookOrderFragment extends Fragment {
                 orders.remove(item);
                 ordersAdapter.notifyDataSetChanged();
                 return false;
-            }
-        });
-
-        // TODO only for testing, remove
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ordersAdapter.add(new CookItem(0, false, "TESTING", "subtesting HERE wow"));
             }
         });
 

@@ -33,37 +33,6 @@ public class CookListAdapter extends ArrayAdapter<CookItem> {
         itemText.setText(item.getItem());
         itemSubText.setText(item.getSubText());
 
-        // TODO: set a long click remove feature
-
         return convertView;
     }
 }
-
-//    /**
-//     * Creates an alert dialog to edit preexisting values in the listview
-//     */
-//    public void createAlertDialog(final Item item) {
-//        final String prevText = item.getItem();
-//        final EditText input = new EditText(getContext());
-//        if (prevText != null) {
-//            input.setText(prevText);
-//            input.setSelection(prevText.length());
-//        }
-//        input.setSelectAllOnFocus(true);
-//
-//        AlertDialog.Builder alert = new AlertDialog.Builder(getContext())
-//                .setMessage(R.string.editableText)
-//                .setView(input)
-//                .setCancelable(true)
-//                .setPositiveButton(R.string.popupConfirm, new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        item.setItem(input.getText().toString());
-//                        mHelper.addItem(item);
-//                    }
-//                });
-//
-//        AlertDialog visibleAlert = alert.create();
-//        visibleAlert.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-//        visibleAlert.show();
-//    }
