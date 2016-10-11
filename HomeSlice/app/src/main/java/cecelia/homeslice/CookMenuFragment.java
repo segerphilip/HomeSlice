@@ -28,7 +28,7 @@ public class CookMenuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.order_fragment, container, false);
-        menus = new ArrayList<CookItem>();
+        menus = new ArrayList<>();
         menusAdapter = new CookListAdapter(getActivity(), menus);
         ButterKnife.bind(this, view);
         menuList.setAdapter(menusAdapter);
