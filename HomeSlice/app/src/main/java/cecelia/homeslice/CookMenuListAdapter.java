@@ -15,23 +15,21 @@ import butterknife.ButterKnife;
 /**
  *
  */
-public class CookListAdapter extends ArrayAdapter<CookItem> {
-    @BindView(R.id.cook_item_text) TextView itemText;
-    @BindView(R.id.cook_item_subtext) TextView itemSubText;
+public class CookMenuListAdapter extends ArrayAdapter<CookMenuItem> {
+    @BindView(R.id.cook_menu_text) TextView itemText;
 
-    public CookListAdapter(Context context, ArrayList<CookItem> items) {
+    public CookMenuListAdapter(Context context, ArrayList<CookMenuItem> items) {
         super(context, 0, items);
     }
 
     @Override
     public View getView(int position, View convertView, final ViewGroup parent) {
-        final CookItem item = getItem(position);
+        final CookMenuItem item = getItem(position);
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.cook_list_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.cook_menu_item, parent, false);
         }
         ButterKnife.bind(this, convertView);
         itemText.setText(item.getItem());
-        itemSubText.setText(item.getSubText());
 
         return convertView;
     }

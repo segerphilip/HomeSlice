@@ -3,13 +3,13 @@ package cecelia.homeslice;
 /**
  *
  */
-public class CookItem {
+public class CookOrderItem {
     private long id;
     private boolean done;
     private String item;
     private String subText;
 
-    public CookItem(long id, boolean done, String item, String subText) {
+    public CookOrderItem(long id, boolean done, String item, String subText) {
         this.id = id;
         this.done = done;
         this.item = item;

@@ -18,8 +18,8 @@ import butterknife.ButterKnife;
  */
 public class CookMenuFragment extends Fragment {
     @BindView(R.id.menu_list) ListView menuList;
-    private ArrayList<CookItem> menus;
-    private CookListAdapter menusAdapter;
+    private ArrayList<CookMenuItem> menus;
+    private CookMenuListAdapter menusAdapter;
 
     public CookMenuFragment() {
     }
@@ -27,9 +27,9 @@ public class CookMenuFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.order_fragment, container, false);
+        View view = inflater.inflate(R.layout.menu_fragment, container, false);
         menus = new ArrayList<>();
-        menusAdapter = new CookListAdapter(getActivity(), menus);
+        menusAdapter = new CookMenuListAdapter(getActivity(), menus);
         ButterKnife.bind(this, view);
         menuList.setAdapter(menusAdapter);
 
@@ -38,7 +38,7 @@ public class CookMenuFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                menusAdapter.add(new CookItem(0, false, "TESTING", "subtesting HERE wow"));
+                menusAdapter.add(new CookMenuItem(0, "TESTING"));
             }
         });
 

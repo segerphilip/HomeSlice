@@ -18,8 +18,8 @@ import butterknife.ButterKnife;
  */
 public class CookOrderFragment extends Fragment {
     @BindView(R.id.order_list) ListView orderList;
-    private ArrayList<CookItem> orders;
-    private CookListAdapter ordersAdapter;
+    private ArrayList<CookOrderItem> orders;
+    private CookOrderListAdapter ordersAdapter;
 
     public CookOrderFragment() {
     }
@@ -29,7 +29,7 @@ public class CookOrderFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.order_fragment, container, false);
         orders = new ArrayList<>();
-        ordersAdapter = new CookListAdapter(getActivity(), orders);
+        ordersAdapter = new CookOrderListAdapter(getActivity(), orders);
         ButterKnife.bind(this, view);
         orderList.setAdapter(ordersAdapter);
 
@@ -37,7 +37,7 @@ public class CookOrderFragment extends Fragment {
         orderList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                final CookItem item = ordersAdapter.getItem(position);
+                final CookOrderItem item = ordersAdapter.getItem(position);
                 item.setDone(true);
                 orders.remove(item);
                 ordersAdapter.notifyDataSetChanged();
