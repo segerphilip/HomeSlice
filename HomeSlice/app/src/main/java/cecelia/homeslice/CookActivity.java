@@ -7,7 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 /**
- *
+ * Main activity which starts all fragments for Cooks
+ * Includes two tabs to different fragments, orders and menu
+ * Orders is controlled by CookOrderFragment
+ * Menu is controlled by CookMenuFragment
  */
 public class CookActivity extends AppCompatActivity {
 

@@ -13,12 +13,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Adapter used to show menu items in a list with just the food name
+ * Adapter used to display ingredients and cooking instructions for a food
  */
-public class CookMenuListAdapter extends ArrayAdapter<CookMenuItem> {
-    @BindView(R.id.cook_menu_text) TextView itemText;
+public class CookMenuItemAdapter extends ArrayAdapter<CookMenuItem> {
+    @BindView(R.id.cook_item_text) TextView itemText;
+    @BindView(R.id.cook_item_subtext) TextView itemSubText;
 
-    public CookMenuListAdapter(Context context, ArrayList<CookMenuItem> items) {
+    public CookMenuItemAdapter(Context context, ArrayList<CookMenuItem> items) {
         super(context, 0, items);
     }
 
@@ -26,10 +27,10 @@ public class CookMenuListAdapter extends ArrayAdapter<CookMenuItem> {
     public View getView(int position, View convertView, final ViewGroup parent) {
         final CookMenuItem item = getItem(position);
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.cook_menu_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.cook_specific_menu, parent, false);
         }
         ButterKnife.bind(this, convertView);
-        itemText.setText(item.getItem());
+        itemText.setText(item.getItem() + "BASLDFHAS");
 
         return convertView;
     }

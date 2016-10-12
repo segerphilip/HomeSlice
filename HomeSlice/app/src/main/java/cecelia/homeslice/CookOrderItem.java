@@ -1,15 +1,15 @@
 package cecelia.homeslice;
 
 /**
- *
+ * Order specifics, which contains the item name, its state, and other information as subtext
  */
 public class CookOrderItem {
-    private long id;
-    private boolean done;
-    private String item;
-    private String subText;
+    long id;
+    int done;
+    String item;
+    String subText;
 
-    public CookOrderItem(long id, boolean done, String item, String subText) {
+    public CookOrderItem(long id, int done, String item, String subText) {
         this.id = id;
         this.done = done;
         this.item = item;
@@ -20,7 +20,7 @@ public class CookOrderItem {
         return id;
     }
 
-    public boolean isDone() {
+    public int getDone() {
         return done;
     }
 
@@ -36,7 +36,7 @@ public class CookOrderItem {
         id = newId;
     }
 
-    public void setDone(boolean newDone) {
+    public void setDone(int newDone) {
         done = newDone;
     }
 

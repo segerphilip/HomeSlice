@@ -15,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- *
+ * Fragment showing the orders that are in progress from users
  */
 public class CookOrderFragment extends Fragment {
     @BindView(R.id.order_list) ListView orderList;
@@ -39,7 +39,7 @@ public class CookOrderFragment extends Fragment {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 final CookOrderItem item = ordersAdapter.getItem(position);
-                item.setDone(true);
+                item.setDone(2);
                 orders.remove(item);
                 ordersAdapter.notifyDataSetChanged();
                 return false;
@@ -47,7 +47,7 @@ public class CookOrderFragment extends Fragment {
         });
 
         // TODO remove after testing
-        orders.add(new CookOrderItem(0, false, "Testing item here", "with some testing subtext as well"));
+        orders.add(new CookOrderItem(0, 1, "Testing item here", "with some testing subtext as well"));
         ordersAdapter.notifyDataSetChanged();
 
         // open detailed view on item tap

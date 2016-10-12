@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 /**
- *
+ * A beautiful tab adapter view
  */
 public class TabAdapter extends FragmentStatePagerAdapter {
     int mNumOfTabs;

@@ -13,7 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- *
+ * Adapter showing a list of all orders coming in from customers, contains the food and subtext ingredients
  */
 public class CookOrderListAdapter extends ArrayAdapter<CookOrderItem> {
     @BindView(R.id.cook_item_text) TextView itemText;

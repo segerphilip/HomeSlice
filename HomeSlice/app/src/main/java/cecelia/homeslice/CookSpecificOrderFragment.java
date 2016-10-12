@@ -13,7 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- *
+ * Shows the specific items in a customers order
  */
 public class CookSpecificOrderFragment extends Fragment {
     // using same adapters as menu because convenince (and want similar view)
@@ -34,7 +34,9 @@ public class CookSpecificOrderFragment extends Fragment {
         ButterKnife.bind(this, view);
         orderList.setAdapter(ordersAdapter);
 
-        orders.add(new CookMenuItem(0, "TESTING TESTING"));
+        // TODO remove after testing
+        orders.add(new CookMenuItem(0, "picname", "Mousse", "ingredient 1; ingredient 2; ingredient 3", "COOK IT"));
+        orders.add(new CookMenuItem(1, "picname", "Mousse", "ingredient 1; ingredient 2; ingredient 3", "COOK IT"));
         ordersAdapter.notifyDataSetChanged();
 
         return view;
