@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
-apply plugin: 'com.google.gms.google-services'
+
 
 android {
     compileSdkVersion 23
@@ -19,7 +19,24 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+//    packagingOptions {
+//        exclude 'META-INF/DEPENDENCIES.txt'
+//        exclude 'META-INF/LICENSE.txt'
+//        exclude 'META-INF/NOTICE.txt'
+//        exclude 'META-INF/NOTICE'
+//        exclude 'META-INF/LICENSE'
+//        exclude 'META-INF/DEPENDENCIES'
+//        exclude 'META-INF/notice.txt'
+//        exclude 'META-INF/license.txt'
+//        exclude 'META-INF/dependencies.txt'
+//        exclude 'META-INF/LGPL2.1'
+//        exclude 'META-INF/LICENSE-FIREBASE_jvm.txt'
+//        exclude 'META-INF/LICENSE-FIREBASE_android.txt'
+//        exclude 'NOTICE_firebase_android'
+//        exclude 'NOTICE_firebase_jvm'
+//    }
 }
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -27,6 +44,10 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     compile 'com.android.support:design:23.4.0'
     compile 'com.google.firebase:firebase-database:9.6.1'
+    compile 'com.google.firebase:firebase-core:9.6.1'
     testCompile 'junit:junit:4.12'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.google.firebase:firebase-auth:9.6.1'
 }
+
+apply plugin: 'com.google.gms.google-services'
