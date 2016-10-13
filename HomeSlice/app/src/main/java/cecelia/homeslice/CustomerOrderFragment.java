@@ -76,7 +76,7 @@ public class CustomerOrderFragment extends Fragment {
                         HashMap<String, Object> itemValue = (HashMap<String, Object>) allItems.get(key);
                         OrderItem item = OrderItem.createFromSerial((HashMap<String, Object>) itemValue);
                         if (order.isInOrder(item.getMenuItem())) {
-                            order.remove(item.getMenuItem(), orderRef);
+                            order.remove(item.getMenuItem());
                         }
                         order.add(item, orderRef);
                     }

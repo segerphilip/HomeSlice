@@ -45,6 +45,7 @@ public class Order {
         removeFromDatabase(item, orderRef);
     }
 
+
     private void removeFromDatabase(OrderItem item, DatabaseReference orderRef) {
         orderRef.child("items").child(item.dbId).removeValue();
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("orderitems").child(item.dbId);
@@ -79,6 +80,29 @@ public class Order {
         }
 
     }
+
+    public void remove(MenuItem item) {
+        boolean removed = false;
+        int index = 0;
+
+        while (!removed) {
+            OrderItem orderItem = this.items.get(index);
+            if (orderItem.menuItem.getName() == item.getName()) {
+                this.items.remove(orderItem);
+                removed = true;
+            }
+            index++;
+        }
+        if (!removed) {
+            throw new IllegalArgumentException("no such menuitem to remove from order");
+        }
+    }
+
+
+
+
+
+
 
     public ArrayList<OrderItem> getItems() {
         return this.items;
