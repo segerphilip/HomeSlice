@@ -14,7 +14,9 @@ public class Order {
     private ArrayList<OrderItem> items;
     int status;
 
-    public Order() {}
+    public Order() {
+        this.status = 0;
+    }
 
     public Order(ArrayList<OrderItem> items) {
         this.items = items;
@@ -139,6 +141,7 @@ public class Order {
             if (dataSnapshotValue.get("items") != null) {
                 setOrderItemsfromDataSnapshot(itemsMap, items);
             }
+            //pip getting null status
             int status = Integer.valueOf(dataSnapshotValue.get("status").toString());
             Order order = new Order(items, status);
             return order;
