@@ -48,6 +48,8 @@ public class CookOrderFragment extends Fragment {
 
         // TODO remove after testing
         orders.add(new CookOrderItem(0, 1, "Testing item here", "with some testing subtext as well"));
+        orders.add(new CookOrderItem(0, 1, "Testing item here", "with some testing subtext as well"));
+        orders.add(new CookOrderItem(0, 1, "Testing item here", "with some testing subtext as well"));
         ordersAdapter.notifyDataSetChanged();
 
         // open detailed view on item tap
