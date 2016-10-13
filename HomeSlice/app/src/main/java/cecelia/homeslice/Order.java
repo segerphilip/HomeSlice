@@ -110,7 +110,7 @@ public class Order {
         return this.items;
     }
 
-    public int getDbId() { return this.status; }
+    public int getStatus() { return this.status; }
 
     public void setStatus(int status) { this.status = status; }
 
