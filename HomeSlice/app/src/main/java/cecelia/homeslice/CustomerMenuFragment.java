@@ -5,11 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,46 +25,38 @@ public class CustomerMenuFragment extends Fragment {
     @BindView(R.id.customer_menu)
     ListView menuListView;
 
-    DatabaseReference firebase;
+    @BindView(R.id.customer_logout_button)
+    Button logoutButton;
+
     CustomerMenuItemAdapter adapter;
+    Menu menu;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_customer_menu, container, false);
+        View view = inflater.inflate(R.layout.customer_menu_fragment, container, false);
         ButterKnife.bind(this, view);
 
-        this.firebase = FirebaseDatabase.getInstance().getReference();
-
-        MenuItem escargot = new MenuItem("escargot");
-        MenuItem paella = new MenuItem("paella");
-//        Firebase menuRef = firebase.child("menu");
-//        menuRef.push().setValue(escargot);
-//        menuRef.push().setValue(paella);
-
-        ArrayList<MenuItem> menuItems = new ArrayList<>();
-        menuItems.add(escargot);
-        menuItems.add(paella);
-
-        this.adapter = new CustomerMenuItemAdapter(this.getActivity(), menuItems);
-        menuListView.setAdapter(this.adapter);
-
-
-
-        addMenuItemsFromDatabaseToAdapter();
+        this.menu = new Menu(new ArrayList<MenuItem>());
+        addMenuItemsFromDatabase();
 
         return view;
     }
 
-    private void addMenuItemsFromDatabaseToAdapter() {
-        DatabaseReference menuRef = this.firebase.child("menu");
-        final CustomerMenuItemAdapter adapter = this.adapter;
+    private void addMenuItemsFromDatabase() {
+        DatabaseReference menuRef = FirebaseDatabase.getInstance().getReference().child("menu");
+        final CustomerActivity activity = (CustomerActivity) getActivity();
+        final Menu menu = this.menu;
         menuRef.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
             @Override
             public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+                menu.removeAll();
                 for (DataSnapshot itemSnapshot: dataSnapshot.getChildren()) {
                     MenuItem item = itemSnapshot.getValue(MenuItem.class);
-                    adapter.add(item);
+                    menu.add(item);
                 }
+
+                createAdapter();
+
             }
 
             @Override
@@ -72,5 +64,23 @@ public class CustomerMenuFragment extends Fragment {
                 System.out.println("The read failed: " + databaseError.getMessage());
             }
         });
+
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomerActivity activity = (CustomerActivity) getActivity();
+                activity.logout();
+            }
+        });
     }
+
+    private void createAdapter() {
+        if (this.adapter == null) {
+            CustomerMenuItemAdapter adapter = new CustomerMenuItemAdapter(getActivity(), menu.getItems());
+            menuListView.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+
  }
