@@ -1,6 +1,5 @@
 package cecelia.homeslice;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,17 +7,19 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
+import com.google.firebase.database.DatabaseReference;
 
 /**
  * Created by Cecelia on 10/9/16.
  */
 public class OrderListAdapter extends ArrayAdapter<OrderItem> {
 
-    public OrderListAdapter(Context context, ArrayList<OrderItem> orderItems) {
-        super(context, 0, orderItems);
+    Order order;
+    DatabaseReference orderRef;
+
+    public OrderListAdapter(Context context, Order currentOrder) {
+        super(context, 0, currentOrder.getItems());
+        this.order = currentOrder;
     }
 
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -29,7 +30,7 @@ public class OrderListAdapter extends ArrayAdapter<OrderItem> {
         }
 
         TextView nameView = (TextView) convertView.findViewById(R.id.item_name);
-        nameView.setText(orderItem.item.name);
+        nameView.setText(orderItem.menuItem.name);
         TextView numberView = (TextView) convertView.findViewById(R.id.item_number);
         numberView.setText(String.valueOf(orderItem.amount));
         TextView addntlCommentsView = (TextView) convertView.findViewById(R.id.item_additional_comments);

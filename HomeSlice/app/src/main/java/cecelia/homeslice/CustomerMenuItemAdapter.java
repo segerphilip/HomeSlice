@@ -3,6 +3,7 @@ package cecelia.homeslice;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,10 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -95,11 +100,15 @@ public class CustomerMenuItemAdapter extends ArrayAdapter<MenuItem> {
         int amount = Integer.valueOf(amountInput.getText().toString());
         String additionalComments = additionalCommentsInput.getText().toString();
 
-        getCurrentOrder().add(new OrderItem(menuItem, amount, additionalComments));
+        OrderItem item = createOrderItemInDatabse(menuItem, amount, additionalComments);
+        getCurrentOrder().add(item, getOrderRef());
     }
 
-    private void removeFromOrder(MenuItem menuItem) {
-        getCurrentOrder().remove(menuItem);
+    private
+    void removeFromOrder(MenuItem menuItem) {
+
+        getCurrentOrder().remove(menuItem, getOrderRef());
+
     }
 
     public void createAddOrderItemAlertDialog(MenuItem menuItem, View button, View itemView) {
@@ -130,7 +139,7 @@ public class CustomerMenuItemAdapter extends ArrayAdapter<MenuItem> {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (orderItem != null) {
-                    getCurrentOrder().remove(orderItem);
+                    getCurrentOrder().remove(orderItem, getOrderRef());
                 }
                 addToOrder(menuItem, dialogView);
                 setButtonVisibility(itemView, menuItem);
@@ -176,11 +185,23 @@ public class CustomerMenuItemAdapter extends ArrayAdapter<MenuItem> {
 
     private Order getCurrentOrder() {
         CustomerActivity ca = (CustomerActivity) this.getContext();
-        return ca.currentOrder;
+        return ca.getCustomer().getOrder();
     }
 
     private boolean checkMenuIteminOrder(MenuItem menuItem) {
         return getCurrentOrder().isInOrder(menuItem);
+    }
+
+    private DatabaseReference getOrderRef() {
+        CustomerActivity activity = (CustomerActivity) getContext();
+        return activity.getOrderRef();
+    }
+
+    private OrderItem createOrderItemInDatabse(MenuItem menuItem, int amount, String additionalComments) {
+        DatabaseReference newItemRef = FirebaseDatabase.getInstance().getReference().child("orderitems").push();
+        OrderItem item = new OrderItem(menuItem, amount, additionalComments, newItemRef.getKey());
+        newItemRef.setValue(item);
+        return item;
     }
 
 }

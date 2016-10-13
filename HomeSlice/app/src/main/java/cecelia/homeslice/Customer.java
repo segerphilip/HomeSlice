@@ -1,25 +1,42 @@
 package cecelia.homeslice;
 
+import android.util.Log;
+
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.io.Serializable;
+
 /**
  * Created by Cecelia on 10/9/16.
  */
-public class Customer {
+public class Customer implements Serializable {
 
-    private String name;
-    private String databaseId;
+    private String email;
+    private String userId;
+    private Order order;
 
     public Customer() {}
 
-    public Customer(String name, String id) {
-        this.name = name;
-        this.databaseId = id;
+    public Customer(String email, String id, Order order) {
+        this.email = email;
+        this.userId = id;
+        this.order = order;
     }
 
-    public String getName() {
-        return this.name;
+    public String getEmail() {
+        return this.email;
     }
 
-    public String getDatabaseId() {
-        return this.databaseId;
+    public String getUserId() {
+        return this.userId;
     }
+
+    public Order getOrder() { return this.order; }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
 }

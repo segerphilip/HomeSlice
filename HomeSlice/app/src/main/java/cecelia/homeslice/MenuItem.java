@@ -3,6 +3,7 @@ package cecelia.homeslice;
 import android.view.Menu;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Cecelia on 10/6/16.
@@ -29,4 +30,8 @@ public class MenuItem {
 //        return this.ingredients;
 //    }
 
+    public static MenuItem getFromHashMap(HashMap<String, String> map) {
+        String name = map.get("name");
+        return new MenuItem(name);
+    }
 }

@@ -38,7 +38,8 @@
             android:id="@+id/customer_pager"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:layout_below="@id/tab_layout"/>
+            android:layout_below="@id/tab_layout"
+            />
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

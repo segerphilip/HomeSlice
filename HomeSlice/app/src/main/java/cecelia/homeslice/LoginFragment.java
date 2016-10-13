@@ -1,6 +1,7 @@
 package cecelia.homeslice;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -143,8 +144,10 @@ public class LoginFragment extends Fragment {
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
+                            Log.d(TAG, "createUserWithEmail:onComplete:" + task.getException());
                             Toast.makeText(currentActivity, R.string.auth_failed,
                                     Toast.LENGTH_SHORT).show();
+                            createUserOrder();
                         }
 
                         // ...
@@ -177,6 +180,9 @@ public class LoginFragment extends Fragment {
 
     private void openApp() {
         Toast.makeText(getActivity(), "OPEN APP", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this.getActivity(), CustomerActivity.class);
+
+        startActivity(intent);
     }
 
     private void login() {
@@ -194,7 +200,7 @@ public class LoginFragment extends Fragment {
                                 // signed in user can be handled in the listener.
                                 if (!task.isSuccessful()) {
                                     Log.w(TAG, "signInWithEmail:failed", task.getException());
-                                    Toast.makeText(currentActivity, R.string.login_failed,
+                                    Toast.makeText(currentActivity, task.getException().toString(),
                                             Toast.LENGTH_SHORT).show();
                                 }
 
@@ -209,6 +215,11 @@ public class LoginFragment extends Fragment {
     private void logout() {
         FirebaseAuth.getInstance().signOut();
         Toast.makeText(getActivity(), "Logged out", Toast.LENGTH_SHORT).show();
+    }
+
+    private void createUserOrder() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseDatabase.getInstance().getReference().child("orders").child(user.getUid()).setValue(new Order()) ;
     }
 
     }
