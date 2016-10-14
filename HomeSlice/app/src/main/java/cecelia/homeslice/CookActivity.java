@@ -6,6 +6,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 /**
  * Main activity which starts all fragments for Cooks
  * Includes two tabs to different fragments, orders and menu
@@ -18,8 +22,6 @@ public class CookActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cook);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         // logic for tab and fragment viewpager learned from here:
         // http://www.truiton.com/2015/06/android-tabs-example-fragments-viewpager/
@@ -47,5 +49,11 @@ public class CookActivity extends AppCompatActivity {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
+    }
+
+    public DatabaseReference getOrderRef() {
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        DatabaseReference orderRef = FirebaseDatabase.getInstance().getReference().child("orders").child(firebaseAuth.getCurrentUser().getUid());
+        return orderRef;
     }
 }

@@ -95,9 +95,6 @@ public class CustomerActivity extends AppCompatActivity {
 
     private void setUpTabs() {
         if (!this.tabsDone) {
-            Toolbar toolbar = (Toolbar) findViewById(R.id.customer_toolbar);
-//            setSupportActionBar(toolbar);
-
 //          // logic for tab and fragment viewpager learned from here:
             // http://www.truiton.com/2015/06/android-tabs-example-fragments-viewpager/
             TabLayout tabLayout = (TabLayout) findViewById(R.id.customer_tab_layout);
