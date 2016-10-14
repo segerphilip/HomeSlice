@@ -12,12 +12,6 @@
         android:text="Logout"
         android:id="@+id/customer_logout_button"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Menu"
-        android:id="@+id/customer_menu_title"/>
-
     <ListView
         android:layout_width="match_parent"
         android:layout_height="0dp"

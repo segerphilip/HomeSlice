@@ -9,25 +9,35 @@
         android:layout_margin="10dp"
         android:id="@+id/customer_menu_item_name"
         android:text="escargot"
-        android:textSize="20dp"
+        android:textSize="@dimen/text_size"
         android:layout_weight="0.7"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@android:drawable/ic_input_add"
-        android:id="@+id/add_to_order" />
+
+        android:id="@+id/add_to_order"
+        android:backgroundTint="@android:color/transparent"
+        android:tint="@color/colorButtonGray"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@android:drawable/ic_delete"
-        android:id="@+id/remove_from_order" />
+
+        android:id="@+id/remove_from_order"
+        android:tint="@color/colorButtonGray"
+        android:backgroundTint="@android:color/transparent" />
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@android:drawable/ic_menu_edit"
-        android:id="@+id/edit_order_item"/>
+
+        android:id="@+id/edit_order_item"
+        android:backgroundTint="@android:color/transparent" />
 
 
 </LinearLayout>
