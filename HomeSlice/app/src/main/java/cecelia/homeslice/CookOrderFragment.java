@@ -3,6 +3,7 @@ package cecelia.homeslice;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,7 +28,7 @@ import butterknife.ButterKnife;
  */
 public class CookOrderFragment extends Fragment {
     @BindView(R.id.order_list) ListView orderList;
-    private ArrayList<CookOrderItem> orders;
+    private ArrayList<OrderItem> orders;
     private CookOrderListAdapter ordersAdapter;
 
     public CookOrderFragment() {
@@ -44,8 +47,7 @@ public class CookOrderFragment extends Fragment {
         orderList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                final CookOrderItem item = ordersAdapter.getItem(position);
-                item.setDone(2);
+                final OrderItem item = ordersAdapter.getItem(position);
                 orders.remove(item);
                 ordersAdapter.notifyDataSetChanged();
                 return false;
@@ -59,8 +61,17 @@ public class CookOrderFragment extends Fragment {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                OrderItem orderItem = dataSnapshot.getValue(OrderItem.class);
-                orders.add(orderItem);
+                HashMap<String, Object> orderSnapshot = (HashMap<String, Object>) dataSnapshot.getValue();
+                HashMap<String, Object> allItems = (HashMap<String, Object> ) orderSnapshot.get("items");
+                ordersAdapter.clear();
+                if (allItems != null) {
+                    for (String key : allItems.keySet()) {
+                        HashMap<String, Object> itemValue = (HashMap<String, Object>) allItems.get(key);
+                        OrderItem item = OrderItem.createFromSerial((HashMap<String, Object>) itemValue);
+                        orders.add(item);
+                    }
+                }
+                ordersAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -68,12 +79,6 @@ public class CookOrderFragment extends Fragment {
                 System.out.println("The read failed: " + databaseError.getCode());
             }
         });
-
-        // TODO remove after testing
-        orders.add(new CookOrderItem(0, 1, "Testing item here", "with some testing subtext as well"));
-        orders.add(new CookOrderItem(0, 1, "Testing item here", "with some testing subtext as well"));
-        orders.add(new CookOrderItem(0, 1, "Testing item here", "with some testing subtext as well"));
-        ordersAdapter.notifyDataSetChanged();
 
         // open detailed view on item tap
         orderList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

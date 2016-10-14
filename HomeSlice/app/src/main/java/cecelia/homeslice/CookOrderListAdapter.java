@@ -15,23 +15,23 @@ import butterknife.ButterKnife;
 /**
  * Adapter showing a list of all orders coming in from customers, contains the food and subtext ingredients
  */
-public class CookOrderListAdapter extends ArrayAdapter<CookOrderItem> {
+public class CookOrderListAdapter extends ArrayAdapter<OrderItem> {
     @BindView(R.id.cook_item_text) TextView itemText;
     @BindView(R.id.cook_item_subtext) TextView itemSubText;
 
-    public CookOrderListAdapter(Context context, ArrayList<CookOrderItem> items) {
+    public CookOrderListAdapter(Context context, ArrayList<OrderItem> items) {
         super(context, 0, items);
     }
 
     @Override
     public View getView(int position, View convertView, final ViewGroup parent) {
-        final CookOrderItem item = getItem(position);
+        final OrderItem item = getItem(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.cook_list_item, parent, false);
         }
         ButterKnife.bind(this, convertView);
-        itemText.setText(item.getItem());
-        itemSubText.setText(item.getSubText());
+        itemText.setText(item.getMenuItem().getName());
+        itemSubText.setText(item.getAdditionalComments());
 
         return convertView;
     }
