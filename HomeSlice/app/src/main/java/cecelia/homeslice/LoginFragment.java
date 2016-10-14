@@ -3,7 +3,6 @@ package cecelia.homeslice;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -178,9 +177,20 @@ public class LoginFragment extends Fragment {
 //        supportInvalidateOptionsMenu();
     }
 
+    /**
+     * Here is where we decide whether to launch cook/customer, depending on email/uid
+     * In this case, for ease and demonstration purposes, the cook is only the user with details:
+     * cook@email.com, password1, uid=Mh4IYyrT0TPrs0fiq5dWfGKhXV53
+     */
     private void openApp() {
-        Toast.makeText(getActivity(), "OPEN APP", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this.getActivity(), CustomerActivity.class);
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        Intent intent;
+        if (firebaseUser.getEmail().equals("cook@email.com")) {
+            intent = new Intent(this.getActivity(), CookActivity.class);
+        } else {
+            intent = new Intent(this.getActivity(), CustomerActivity.class);
+        }
 
         startActivity(intent);
     }
