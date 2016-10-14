@@ -9,17 +9,16 @@ import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 
+import java.util.ArrayList;
+
 /**
  * Created by Cecelia on 10/9/16.
  */
 public class OrderListAdapter extends ArrayAdapter<OrderItem> {
 
-    Order order;
-    DatabaseReference orderRef;
 
-    public OrderListAdapter(Context context, Order currentOrder) {
-        super(context, 0, currentOrder.getItems());
-        this.order = currentOrder;
+    public OrderListAdapter(Context context, ArrayList<OrderItem> items) {
+        super(context, 0, items);
     }
 
     public View getView(final int position, View convertView, ViewGroup parent) {

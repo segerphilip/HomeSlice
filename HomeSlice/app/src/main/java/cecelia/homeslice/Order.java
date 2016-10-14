@@ -65,20 +65,15 @@ public class Order {
     }
 
     public void remove(MenuItem item, DatabaseReference orderRef) {
-        boolean removed = false;
         int index = 0;
 
-        while (!removed) {
+        while (index <= this.items.size()) {
             OrderItem orderItem = this.items.get(index);
-            if (orderItem.menuItem.getName() == item.getName()) {
+            if (orderItem.menuItem.getName().equals(item.getName())) {
                 this.remove(orderItem, orderRef);
-                removed = true;
-//                Log.d("MenuActivity", "an menuItem has been removed");
+                Log.d("Order", orderItem.menuItem.getName() + "," + orderItem.additionalComments);
             }
-            index++;
-        }
-        if (!removed) {
-            throw new IllegalArgumentException("no such menu menuItem to remove from order");
+            index = index + 1;
         }
 
     }
@@ -101,11 +96,6 @@ public class Order {
     }
 
 
-
-
-
-
-
     public ArrayList<OrderItem> getItems() {
         return this.items;
     }
@@ -116,8 +106,7 @@ public class Order {
 
     public boolean isInOrder(MenuItem item) {
         for (OrderItem o: this.items) {
-            //will this not return true if they are not the same instance??
-            if (o.menuItem.getName() == item.getName()) {
+            if (o.menuItem.getName().equals(item.getName())) {
                 return true;
             }
         }
@@ -126,7 +115,7 @@ public class Order {
 
     public OrderItem getItem(MenuItem item) {
         for (OrderItem o: this.items) {
-            if (o.menuItem == item) {
+            if (o.menuItem.getName().equals(item.getName())) {
                 return o;
             }
         }
