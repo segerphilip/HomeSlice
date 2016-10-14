@@ -9,6 +9,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -43,6 +49,23 @@ public class CookOrderFragment extends Fragment {
                 orders.remove(item);
                 ordersAdapter.notifyDataSetChanged();
                 return false;
+            }
+        });
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference().child("orders");
+
+        // listener for getting all order items
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                OrderItem orderItem = dataSnapshot.getValue(OrderItem.class);
+                orders.add(orderItem);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
             }
         });
 
