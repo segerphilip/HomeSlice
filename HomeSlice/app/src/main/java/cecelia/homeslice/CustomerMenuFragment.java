@@ -36,35 +36,44 @@ public class CustomerMenuFragment extends Fragment {
         View view = inflater.inflate(R.layout.customer_menu_fragment, container, false);
         ButterKnife.bind(this, view);
 
-        this.menu = new Menu(new ArrayList<MenuItem>());
+        createAdapter();
         addMenuItemsFromDatabase();
+        setLogoutListener();
 
         return view;
     }
 
     private void addMenuItemsFromDatabase() {
         DatabaseReference menuRef = FirebaseDatabase.getInstance().getReference().child("menu");
-        final CustomerActivity activity = (CustomerActivity) getActivity();
-        final Menu menu = this.menu;
         menuRef.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
             @Override
             public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
                 menu.removeAll();
-                for (DataSnapshot itemSnapshot: dataSnapshot.getChildren()) {
-                    MenuItem item = itemSnapshot.getValue(MenuItem.class);
-                    menu.add(item);
-                }
-
-                createAdapter();
-
+                addItemstoMenu(dataSnapshot);
+                adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getMessage());
+                Toast.makeText(getActivity(), "Failed to load the menu", Toast.LENGTH_SHORT);
             }
         });
+    }
 
+    private void createAdapter() {
+        this.menu = new Menu(new ArrayList<MenuItem>());
+        this.adapter = new CustomerMenuItemAdapter(getActivity(), menu.getItems());
+        menuListView.setAdapter(adapter);
+    }
+
+    private void addItemstoMenu(DataSnapshot dataSnapshot) {
+        for (DataSnapshot itemSnapshot: dataSnapshot.getChildren()) {
+            MenuItem item = itemSnapshot.getValue(MenuItem.class);
+            menu.add(item);
+        }
+    }
+
+    private void setLogoutListener() {
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,14 +82,5 @@ public class CustomerMenuFragment extends Fragment {
             }
         });
     }
-
-    private void createAdapter() {
-        if (this.adapter == null) {
-            CustomerMenuItemAdapter adapter = new CustomerMenuItemAdapter(getActivity(), menu.getItems());
-            menuListView.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
-        }
-    }
-
 
  }

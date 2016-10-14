@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -97,11 +98,18 @@ public class CustomerMenuItemAdapter extends ArrayAdapter<MenuItem> {
         EditText amountInput = (EditText)dialogView.findViewById(R.id.amount);
         EditText additionalCommentsInput = (EditText)dialogView.findViewById(R.id.additional_comments);
 
-        int amount = Integer.valueOf(amountInput.getText().toString());
-        String additionalComments = additionalCommentsInput.getText().toString();
+        if (!amountInput.getText().toString().isEmpty()) {
+            int amount = Integer.valueOf(amountInput.getText().toString());
+            String additionalComments = additionalCommentsInput.getText().toString();
 
-        OrderItem item = createOrderItemInDatabse(menuItem, amount, additionalComments);
-        getCurrentOrder().add(item, getOrderRef());
+            OrderItem item = createOrderItemInDatabse(menuItem, amount, additionalComments);
+            getCurrentOrder().add(item, getOrderRef());
+            Toast.makeText(getContext(), menuItem.name + " was added to your order", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getContext(), "You must input an amount.", Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 
     private

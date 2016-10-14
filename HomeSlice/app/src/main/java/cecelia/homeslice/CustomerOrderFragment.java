@@ -14,7 +14,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.shaded.fasterxml.jackson.databind.type.ArrayType;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import butterknife.BindView;
@@ -32,8 +34,7 @@ public class CustomerOrderFragment extends Fragment {
 
     @BindView(R.id.customer_logout_button)
     Button logoutButton;
-
-    DatabaseReference firebase;
+    OrderListAdapter adapter;
 
     public CustomerOrderFragment() {
     }
@@ -57,32 +58,28 @@ public class CustomerOrderFragment extends Fragment {
         return view;
     }
 
-    public Order getOrderFromDatabase() {
+    public void getOrderFromDatabase() {
 
         final CustomerActivity activity = (CustomerActivity)this.getActivity();
-        Customer customer = activity.customer;
+        this.adapter = new OrderListAdapter(activity, new ArrayList<OrderItem>());
+        orderList.setAdapter(adapter);
 
-        final Order order = customer.getOrder();
         final DatabaseReference orderRef = getOrderRef();
 
         orderRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-//                order.removeAll();
                 HashMap<String, Object> orderSnapshot = (HashMap<String, Object>)dataSnapshot.getValue();
                 HashMap<String, Object> allItems = (HashMap<String, Object> ) orderSnapshot.get("items");
+                adapter.clear();
                 if (allItems != null) {
                     for (String key : allItems.keySet()) {
                         HashMap<String, Object> itemValue = (HashMap<String, Object>) allItems.get(key);
                         OrderItem item = OrderItem.createFromSerial((HashMap<String, Object>) itemValue);
-                        if (order.isInOrder(item.getMenuItem())) {
-                            order.remove(item.getMenuItem());
-                        }
-                        order.add(item, orderRef);
+                        adapter.add(item);
                     }
                 }
-                OrderListAdapter adapter = new OrderListAdapter(activity, order);
-                orderList.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -90,8 +87,6 @@ public class CustomerOrderFragment extends Fragment {
                 Log.d(TAG, databaseError.toString());
             }
         });
-
-        return order;
     }
 
     private DatabaseReference getOrderRef() {
