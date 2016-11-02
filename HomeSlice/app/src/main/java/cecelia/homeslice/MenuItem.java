@@ -13,7 +13,7 @@ public class MenuItem {
 
     String name;
 //    ArrayList<String> ingredients;
-
+// unused?
     public MenuItem() {}
 
 //    public MenuItem(String name, ArrayList<String> ingredients) {

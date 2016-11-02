@@ -196,7 +196,7 @@ public class LoginFragment extends Fragment {
     }
 
     private void login() {
-            String s = "qhwil";
+            String s = "qhwil"; // What is this?
             final LoginActivity currentActivity = (LoginActivity) getActivity();
             if (!emailInput.getText().toString().isEmpty() && !passwordInput.getText().toString().isEmpty()) {
                 mAuth.signInWithEmailAndPassword(emailInput.getText().toString(), passwordInput.getText().toString())

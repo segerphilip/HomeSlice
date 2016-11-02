@@ -1,0 +1,116 @@
+Note: A lot of features didn't work on my phone. It could be something to do with Firebase. If that is the case, I can review the app on your phones/emulators. 
+
+General Comments:
+
+1. 	Toasts:
+	* Love the toasts to show that something succeeded or something failed
+	* Could clean up the toast messages a little
+
+2.	Login:
+	* Really like that you guys did the login/signup part, especially using Firebase
+	* Could handle unusual cases for e.g. the user doesn't have internet connection. I got a vague firebase error which didn't say anything like "Check your internet connection"
+	* I am a little confused about the purpose of Sign Up. On tapping that button, it changes to "Create Account". I tried that but it tells me "Account Creation Failed". But if I tried to Log In, I can successfully login with the same email.
+	* Sometimes, I get a toast that says "AUTH Failed". But I can still get to the menu
+
+3.	Design:
+	
+	I wasn't sure how to access the Chef page. Update: I talked to you guys and now know how to get to Chef page
+
+	a) Customer:
+		* The menu was beautiful. I like that I could not only add multiple items but also add comments about each menu item in my order
+		* I would have liked to see some of the ingredients in the menu items but that is a design decision. You guys chose not to display the ingredients which is totally fine.
+		* I was a little confused about how to send in my order after I have finalized it. It seems like my order is automatically updated on the Chef page but there was no way for me to know for sure that my order has reached the Chef.
+
+	b) Chef:
+		* For each item, the layout looks really nice. There is also a section for in
+		* I can only add one item to the menu. Also unclear on how to edit the items
+		* Can't see orders
+
+	c) 200 points for the logo
+
+4.	Bugs:
+	* Sometimes, I got a toast that said "AUTH fail" but I could see the menu and orders page
+	* App crashed if customer tries to edit/delete items they have on the menu
+	* In the cook page, selecting the "Mousse" item opens it. But the only way to get back was to use the back button. It would be nice to add some other kind of interaction to get to the previous screen
+	* Sign up/Create Account bug
+
+5.	Code:
+	* Really good names for your .java and .xml files
+	* I saw comments on most methods and classes. Good work there
+	* Use of appropriate data structures
+	* Firebase!!! 
+
+Completion
+
+Here are the MVP requirements listed:
+
+	Cooks:
+
+	[x] There should be a “Menu” with food items such as Hamburgers, Pizza, etc.
+
+	- I can't add custom items though
+
+	[x] Each food item should have an associated ingredients list. (ie, Pizza -> dough, sauce, cheese)
+
+	[x] Cooks can add/edit/delete food items from the Menu.
+
+	- Can't figure out edit and delete
+
+	[ ] Cooks can add/edit/delete ingredients from each menu item’s ingredients list.
+
+	- Can't figure out add, edit and delete
+
+	[ ] Cooks can view “orders”, which each have an associated customer and food item(s).
+
+	- Can't view orders. This might just be some firebase issue. Lmk if that is the case.
+
+	[ ] Cooks can mark orders as completed.
+
+	- Can't see any orders. So can't check if I can mark something as complete
+
+	Customers
+
+	[x] Customers can view the menu and make orders by selecting one or more menu items, and the quantities of each item (i.e., 2 burgers, 4 pizzas, etc.).
+
+	[ ] Customers should be able to specify their name when placing an order.
+
+	- If the name of the customer is extracted from their login info, lmk
+
+Your grade
+
+Lab Rubric(150/200 points total):
+
+	Proposal (10/10 points)
+	* 10 - You did the proposal and a teaching team member checked it off
+
+	Wireframes (30/30 points)
+	* 30 - You created wireframes for all fragments/screens of your app. You created a rough design of what your app will look like. You clearly outlined the workflow of your app (fragment transitions, how users navigate the app, where the user enters/receives information)
+
+	Final Deliverable (110/160 points)
+		Functionality: 35/70 points
+			Completion: 30/60 points
+			* 30 - Some of the required features were implemented.
+
+			Bug free: 5/10 points
+			* 5 - Your app has one or two bugs, occasionally causing unexpected behavior
+
+		Design/Usability: 10/15 points
+		* 10 - A small part of the app was unintuitive to interact with or it was a bit ugly.
+
+		Quality: 65/75 points
+
+			Git practices: 15/20 pts
+
+			* 20 - Separate branches were used for distinct features, master branch was kept “clean” and functional. Code was peer reviewed with pull requests before being merged.
+			* 10 - Not all code was reviewed before being merged. Each branch did not have a distinct purpose/feature.
+
+			Good coding practices: 15/20 pts
+
+			* 20 - Objects are intelligently designed and used where appropriate, inheritance used when appropriate, code is concise, naming conventions followed, proper access modifiers are used, public getters/setters are used instead of public variables, etc.
+			* 10 - Some of the above practices were broken, but you mostly followed good practices.
+
+			Readability: 20/20 pts
+			* 20 - Functions and variables are named well. Code is well commented where appropriate. Confusing lines are commented. Lines are not too long.
+
+			Even work distribution: 15/15 pts
+			* 15 - You divided work fairly. Everyone had a significant contribution to your app.

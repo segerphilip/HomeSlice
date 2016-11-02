@@ -30,7 +30,7 @@ public class CookSpecificMenuFragment extends Fragment {
 
         ButterKnife.bind(this, view);
         ImageView menuImage = (ImageView) view.findViewById(R.id.imageView);
-
+        // I might be saying things you guys probably understand, but yea,,,hardcoding isn' good
         menuImage.setImageResource(R.drawable.common_google_signin_btn_icon_dark);
         menuTitle.setText("Mousse");
         menuIngredients.setText("1 Canadian moose\n50 mL pure maple syrup\nWow");
