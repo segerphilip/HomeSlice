@@ -22,17 +22,19 @@ General Comments:
 		* I was a little confused about how to send in my order after I have finalized it. It seems like my order is automatically updated on the Chef page but there was no way for me to know for sure that my order has reached the Chef.
 
 	b) Chef:
-		* For each item, the layout looks really nice. There is also a section for in
-		* I can only add one item to the menu. Also unclear on how to edit the items
+		* For each item, the layout looks really nice. There is also a section for ingredients
+		* I can only add one kind of item to the menu. Also unclear on how to edit the items
 		* Can't see orders
 
-	c) 200 points for the logo
+	c) 2000 points for the logo
 
 4.	Bugs:
 	* Sometimes, I got a toast that said "AUTH fail" but I could see the menu and orders page
 	* App crashed if customer tries to edit/delete items they have on the menu
 	* In the cook page, selecting the "Mousse" item opens it. But the only way to get back was to use the back button. It would be nice to add some other kind of interaction to get to the previous screen
 	* Sign up/Create Account bug
+	* I have to press the back button multiple times to get to the login page. 
+	* Loses menu items for the chef on rotation
 
 5.	Code:
 	* Really good names for your .java and .xml files
