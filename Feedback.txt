@@ -8,7 +8,7 @@ General Comments:
 
 2.	Login:
 	* Really like that you guys did the login/signup part, especially using Firebase
-	* Could handle unusual cases for e.g. the user doesn't have internet connection. I got a vague firebase error which didn't say anything like "Check your internet connection"
+	* Couldn't handle unusual cases for e.g. the user doesn't have internet connection. I got a vague firebase error which didn't say anything like "Check your internet connection"
 	* I am a little confused about the purpose of Sign Up. On tapping that button, it changes to "Create Account". I tried that but it tells me "Account Creation Failed". But if I tried to Log In, I can successfully login with the same email.
 	* Sometimes, I get a toast that says "AUTH Failed". But I can still get to the menu
 
