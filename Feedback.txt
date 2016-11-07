@@ -30,7 +30,6 @@ General Comments:
 
 4.	Bugs:
 	* Sometimes, I got a toast that said "AUTH fail" but I could see the menu and orders page
-	* App crashed if customer tries to edit/delete items they have on the menu
 	* In the cook page, selecting the "Mousse" item opens it. But the only way to get back was to use the back button. It would be nice to add some other kind of interaction to get to the previous screen
 	* Sign up/Create Account bug
 	* I have to press the back button multiple times to get to the login page. 
@@ -55,8 +54,6 @@ Here are the MVP requirements listed:
 	[x] Each food item should have an associated ingredients list. (ie, Pizza -> dough, sauce, cheese)
 
 	[x] Cooks can add/edit/delete food items from the Menu.
-
-	- Can't figure out edit and delete
 
 	[ ] Cooks can add/edit/delete ingredients from each menu item’s ingredients list.
 
@@ -90,8 +87,8 @@ Lab Rubric(165/200 points total):
 
 	Final Deliverable (125/160 points)
 		Functionality: 50/70 points
-			Completion: 45/60 points
-			* 30 - Some of the required features were implemented.
+			Completion: 50/60 points
+			* 35 - Some of the required features were implemented.
 				+ 15 for login auth and firebase
 
 			Bug free: 5/10 points
