@@ -77,7 +77,7 @@ Here are the MVP requirements listed:
 
 Your grade
 
-Lab Rubric(165/200 points total):
+Lab Rubric(170/200 points total):
 
 	Proposal (10/10 points)
 	* 10 - You did the proposal and a teaching team member checked it off
@@ -85,8 +85,8 @@ Lab Rubric(165/200 points total):
 	Wireframes (30/30 points)
 	* 30 - You created wireframes for all fragments/screens of your app. You created a rough design of what your app will look like. You clearly outlined the workflow of your app (fragment transitions, how users navigate the app, where the user enters/receives information)
 
-	Final Deliverable (125/160 points)
-		Functionality: 50/70 points
+	Final Deliverable (130/160 points)
+		Functionality: 55/70 points
 			Completion: 50/60 points
 			* 35 - Some of the required features were implemented.
 				+ 15 for login auth and firebase
